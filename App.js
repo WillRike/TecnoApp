@@ -1,21 +1,26 @@
+import 'react-native-gesture-handler';
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+
+import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
+
+import Routes from './src/routes';
+import Main from './src/app/fontes';
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Iniciando projeto para Tecnomotor!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <Main>
+      <NavigationContainer>
+        <Routes />
+      </NavigationContainer>
+    </Main>
+
+    // <Main>
+    //   <StatusBar style="auto" />
+    //   <NavigationContainer>
+    //     <Routes />
+    //   </NavigationContainer>
+    // </Main>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
