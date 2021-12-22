@@ -33,13 +33,13 @@ Todas as requisições e respostas foram feitas no formato de [Json](https://www
 ### Tela Home
 Esta é a tela principal do app, onde é possível acessar todas as demais telas.
 
-![image](https://user-images.githubusercontent.com/38054943/147143421-0c127ded-f8eb-46a6-885d-5aeeebae98af.png =100x20)
+![image](https://user-images.githubusercontent.com/38054943/147143421-0c127ded-f8eb-46a6-885d-5aeeebae98af.png)
 
 
 ### Tela Cadastrar Montadora
 Nesta tela é possível criar uma nova montadora.
 
-(https://raw.githubusercontent.com/WillRike/TecnoApp/main/ScreenShots-TecnoApp/3.jpeg)
+![image](https://user-images.githubusercontent.com/38054943/147143948-eac21df4-5791-4be3-ad95-31e670f7e406.png)
 
 Na requisição para cadastrar a montadora é necessário somente inserir um nome. 
 ```java
@@ -65,7 +65,7 @@ const automakerExists = await Automaker.findOne({
 ### Tela Cadastrar Veículo
 Nesta tela é necessário selecionar uma montadora e inserir o nome do veículo.
 
-(https://raw.githubusercontent.com/WillRike/TecnoApp/main/ScreenShots-TecnoApp/4.jpeg)
+![image](https://user-images.githubusercontent.com/38054943/147143997-2dd83b05-05aa-4f9a-bc72-37b0fc900fe6.png)
 
 Na requisição para cadastrar o veículo é necessário informar o id da montadora e o nome do veículo. 
 ```java
@@ -104,7 +104,7 @@ No backend o controller verifica se existe a montadora informada e se o nome do 
 ### Tela Listar Veículos
 Nesta tela é mostrado uma tabela com todos os veículos já cadastrados.
 
-(https://raw.githubusercontent.com/WillRike/TecnoApp/main/ScreenShots-TecnoApp/2.jpeg)
+![image](https://user-images.githubusercontent.com/38054943/147144059-e25fbae0-bf60-4c22-806f-9404bc4041a1.png)
 
 Entrando na tela listar cadastros o hook useEffect() chama a função getListVehicles, onde é carregado todos os veículos cadastrados.  
 ```java
@@ -175,7 +175,7 @@ Abaixo um exemplo da resposta do backend com os dados no formato Json:
 ### Modelagem do Banco de Dados
 Foram criadas duas tabelas para armazenar e servir os dados e a modelagem pode ser vista abaixo:
 
-(https://raw.githubusercontent.com/WillRike/TecnoApp/main/ScreenShots-TecnoApp/modelagemBD-TecnoApp.png)
+![image](https://user-images.githubusercontent.com/38054943/147144137-b97551b1-dd2a-4127-bc82-c6fac4d3c4c0.png)
 
 Como pode ser visto o relacionamento entre as duas tabelas é feito através do campo id da tabela “automakers” que é inserido no campo id_automaker na tabela “vehicles”.
 
