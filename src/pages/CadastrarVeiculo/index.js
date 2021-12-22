@@ -18,7 +18,7 @@ export default function CadastrarVeiculo({ navigation }) {
   async function handleSubmit() {
     if (selectAutomaker !== null && vehicle !== '') {
       try {
-        await api.post('/vehicleregister', {
+        await api.post('/registervehicle', {
           vehicle_name: vehicle,
           id_automaker: selectAutomaker,
         });

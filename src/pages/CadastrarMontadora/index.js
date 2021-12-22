@@ -14,7 +14,7 @@ export default function CadastrarMontadora({ navigation }) {
   async function handleSubmit() {
     if (automaker !== '') {
       try {
-        await api.post('/automakerregister', { automaker_name: automaker });
+        await api.post('/registerautomaker', { automaker_name: automaker });
 
         Alert.alert('Montadora cadastrada com sucesso!');
 
