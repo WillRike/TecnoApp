@@ -33,7 +33,7 @@ Todas as requisições e respostas foram feitas no formato de [Json](https://www
 ### Tela Home
 Esta é a tela principal do app, onde é possível acessar todas as demais telas.
 
-![image](https://user-images.githubusercontent.com/38054943/147143421-0c127ded-f8eb-46a6-885d-5aeeebae98af.png)
+![image](https://user-images.githubusercontent.com/38054943/147143421-0c127ded-f8eb-46a6-885d-5aeeebae98af.png =100x20)
 
 
 ### Tela Cadastrar Montadora
