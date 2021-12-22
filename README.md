@@ -1,5 +1,5 @@
 # Projeto - Analista de Desenvolvimento (TecnoApp)
-Este aplicativo tem como objetivo cadastrar veículos e suas respectivas montadoras. Assim, é possível cadastrar montadoras e veículos e visualizar os cadastrados na tela. 
+Este aplicativo tem como objetivo cadastrar veículos e suas respectivas montadoras. Assim, é possível cadastrar montadoras/veículos e visualizar os cadastrados na tela. 
 
 ## Tecnologias envolvidas
 
@@ -33,7 +33,7 @@ Todas as requisições e respostas foram feitas no formato de [Json](https://www
 ### Tela Home
 Esta é a tela principal do app, onde é possível acessar todas as demais telas.
 
-(https://raw.githubusercontent.com/WillRike/TecnoApp/main/ScreenShots-TecnoApp/1.jpeg)
+![image](https://user-images.githubusercontent.com/38054943/147143421-0c127ded-f8eb-46a6-885d-5aeeebae98af.png)
 
 
 ### Tela Cadastrar Montadora
