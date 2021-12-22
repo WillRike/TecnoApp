@@ -18,7 +18,6 @@ export const Title = styled.Text`
   text-align: center;
   font-weight: bold;
   font-size: 16px;
-  /* background: #000; */
 `;
 
 export const TableName = styled.View`
@@ -35,13 +34,7 @@ export const TableName = styled.View`
 export const Name = styled.Text`
   color: #c20000;
   text-align: center;
-  justify-content: center;
   align-items: center;
-  /* width: 25%;
-  margin-right: 1px;
-
-  font-size: 16px; */
-  /* background: #000; */
 `;
 
 export const Edit = styled.View`

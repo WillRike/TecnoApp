@@ -1,5 +1,7 @@
-import React from 'react';
-import { View, Text } from 'react-native';
+import React, { useState } from 'react';
+import { View, Text, Alert } from 'react-native';
+
+import api from '../../services/api';
 
 // import { Container } from './styles';
 
@@ -7,12 +9,37 @@ import Input from '../../components/Input';
 import Button from '../../components/Button';
 
 export default function CadastrarMontadora({ navigation }) {
+  const [automaker, setAutomaker] = useState('');
+
+  async function handleSubmit() {
+    if (automaker !== '') {
+      try {
+        await api.post('/automakerregister', { automaker_name: automaker });
+
+        Alert.alert('Montadora cadastrada com sucesso!');
+
+        setAutomaker('');
+      } catch (err) {
+        console.log(err.response.data);
+        Alert.alert(error.response.data);
+      }
+    } else {
+      Alert.alert('Informe uma montadora!');
+    }
+  }
+
   return (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Input bgColor={'#C20000'} placeholder="Informe a Montadora" returnKeyType="next" />
+      <Input
+        bgColor={'#C20000'}
+        placeholder="Informe a Montadora"
+        value={automaker}
+        onChangeText={setAutomaker}
+        returnKeyType="next"
+      />
 
       <Button
-        onPress={() => alert('Salvo com Sucesso!')}
+        onPress={() => handleSubmit()}
         width={'60%'}
         heigth={'77px'}
         fontSize={'16px'}

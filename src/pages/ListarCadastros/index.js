@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   View,
   Text,
@@ -8,75 +8,53 @@ import {
   StatusBar,
   ScrollView,
   Alert,
+  ScrollViewBase,
 } from 'react-native';
 
-import { Feather } from '@expo/vector-icons';
+import api from '../../services/api';
+
 import ModalEdit from '../../components/ModalEdit';
 
 import { Container, TableTitle, Title, TableName, Name, IconContainer, Edit } from './styles';
 
-const DATA = [
-  {
-    id: 'ID',
-    veiculo: 'Gol',
-    montadora: 'Volkswagen',
-  },
-  {
-    id: '02',
-    veiculo: 'Uno',
-    montadora: 'Fiat',
-  },
-  {
-    id: '03',
-    veiculo: 'Fox/CrossFox',
-    montadora: 'Volkswagen',
-  },
-  {
-    id: '04',
-    veiculo: 'HB20',
-    montadora: 'Hyundai',
-  },
-  {
-    id: '05',
-    veiculo: 'Gol',
-    montadora: 'Volkswagen',
-  },
-  {
-    id: '06',
-    veiculo: 'Uno',
-    montadora: 'Fiat',
-  },
-  {
-    id: '07',
-    veiculo: 'Fox/CrossFox',
-    montadora: 'Volkswagen',
-  },
-  {
-    id: '08',
-    veiculo: 'HB20',
-    montadora: 'Hyundai',
-  },
-];
-
 const Item = ({ id, veiculo, montadora }) => (
   <TableName>
-    <Name style={styles.id}>{id.toUpperCase()}</Name>
-    <Name style={styles.widthName}>{veiculo.toUpperCase()}</Name>
-    <Name style={styles.widthName}>{montadora.toUpperCase()}</Name>
-    <Edit>
+    <Name style={styles.id}>{id}</Name>
+    <Name style={styles.widthName}>{veiculo}</Name>
+    <Name style={styles.widthName}>{montadora}</Name>
+    <Edit style={styles.edit}>
       <ModalEdit />
     </Edit>
-    {/* <Name style={styles.edit}> */}
-
-    {/* <IconContainer onPress={() => Alert.alert('Chamou')}>
-        <Feather name={'edit'} size={24} color={'#C20000'} />
-      </IconContainer> */}
-    {/* </Name> */}
   </TableName>
 );
 
 export default function ListarCadastros({ route, navigation }) {
   const { ItemId, Outro } = route.params;
+
+  const [listVehicles, setListVehicles] = useState([]);
+
+  async function getListVehicles() {
+    try {
+      const response = await api.get('/getvehicles');
+
+      const loadVehicles = response.data.map((item) => ({
+        id: item.id,
+        veiculo: item.vehicle_name,
+        montadora: item.automaker.automaker_name,
+      }));
+
+      setListVehicles(loadVehicles);
+    } catch (err) {
+      console.log(err.response.data);
+      Alert.alert(err.response.data.error);
+    }
+  }
+
+  useEffect(() => {
+    (async () => {
+      getListVehicles();
+    })();
+  }, []);
 
   const renderItem = ({ item }) => (
     <Item id={item.id} veiculo={item.veiculo} montadora={item.montadora} />
@@ -92,7 +70,7 @@ export default function ListarCadastros({ route, navigation }) {
       </TableTitle>
 
       <ScrollView>
-        <FlatList data={DATA} renderItem={renderItem} keyExtractor={(item) => item.id} />
+        <FlatList data={listVehicles} renderItem={renderItem} keyExtractor={(item) => item.id} />
       </ScrollView>
     </Container>
   );
@@ -122,11 +100,3 @@ const styles = StyleSheet.create({
     width: '20%',
   },
 });
-
-{
-  /* <Text>Details Screen</Text>
-      <Text>itemId: {JSON.stringify(ItemId)}</Text>
-      <Text>otherParam: {JSON.stringify(Outro)}</Text>
-      <Text>Listar Cadastro</Text>
-      <Button title="voltar par Home" onPress={() => navigation.popToTop()} /> */
-}
